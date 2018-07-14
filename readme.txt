@@ -3,14 +3,14 @@ A collection of scripts for analysis of amplicon sequencing data.
 For instructions, see the User's Guide at https://eli-meyer.github.io/Amplicon_utilities/
 
 -------------------------
-blastnID.pl
+BlastnID.pl
 -------------------------
 
 ------------------------------------------------------------
-blastnID.pl
+BlastnID.pl
 Compares a set of DNA sequences with a curated DNA database to infer the biological origin of
 each sequence. 
-Usage: blastnID.pl -q queries -d DB -s min_score -i input.txt -o output.txt
+Usage: BlastnID.pl -q queries -d DB -s min_score -i input.txt -o output.txt
 Required arguments:
 	-q queries	the file of sequences to be identified, FASTA format
 	-d DB		a BLAST formatted nucleotide database
@@ -79,14 +79,14 @@ Options:
 ------------------------------------------------------------
 
 -------------------------
-random_paired_fastq.pl
+RandomFastqPE.pl
 -------------------------
 
 ------------------------------------------------------------
-random_paired_fastq.pl
+RandomFastqPE.pl
 Draws the specified number of sequences randomly from a pair of input files.
 This provides a randomly selected set of paired reads. 
-Usage: random_paired_fastq.pl -f f.input -r r.input -n num_seq -o f.output -p r.output
+Usage: RandomFastqPE.pl -f f.input -r r.input -n num_seq -o f.output -p r.output
 Required arguments:
 	-f f.input	name of the "R1" input file (forward reads) from which sequences will be randomly drawn.
 	-r r.input	name of the corresponding "R2" input file (reverse reads).
