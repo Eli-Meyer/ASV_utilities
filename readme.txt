@@ -1,6 +1,6 @@
 A collection of scripts for analysis of amplicon sequencing data.
 
-For instructions, see the User's Guide at https://eli-meyer.github.io/Amplicon_utilities/
+For instructions, see the User's Guide at https://eli-meyer.github.io/ASV_utilities/
 
 -------------------------
 BlastnID.pl
