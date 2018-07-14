@@ -214,18 +214,26 @@
    <span title="Click to collapse">
    <b>&#9665 Identify origin of ASVs</b></span></a>
    <div class="list">
+    The instructions in this step focus specifically on analysis of Symbiodinium communities in reef-building corals. The database 
+    will have to be prepared differently if your target, samples, or biological questions are different, although the same general
+    process is generally applicable.
    <ul>
+   
    <li><b> Prepare BLAST database </b></li>
-   Text:<br>
-    <code>  </code><br>
-
-    <li><b> Prepare BLAST database </b></li>
-   Text:<br>
-    <code>  </code><br>
-
-    <li><b> Prepare BLAST database </b></li>
-   Text:<br>
-    <code>  </code><br>
+   First prepare a FASTA file containing:<br>
+    <ol>
+     <li>ITS2 sequences from a diverse collection of Symbiodinium types, with informative seuqence names. For example,<br>
+      <code><i>clade</i>_<i>sequenceID</i></code><br></li>
+     <li>ITS2 sequences from the host coral or a close relative. 
+    </ol>
+    Next, prepare a BLAST database from that file as:<br>
+    <code>makeblastdb -in customDB.fasta -dbtype nucl</code><br>
+    <br>
+    
+    <li><b> Annotate ASVs based on comparison with the BLAST db </b></li>
+    Finally, you can compare your ASVs with the custom BLASTN database and add this information to the table of ASV abundance. 
+    This identifies the biological origin of each sequence, providing context for interpretation of the ASV profiles.<br>
+    <code>BlastnID.pl -q ASVs.fasta -d customDB.fasta -s 200 -i ASVtable.txt -o annot.ASVtable.txt </code><br>
 
     
     </ul>
