@@ -118,8 +118,6 @@
    <div class="list">
    <ul>
    <li><b>Trim to remove low-quality ends</b></li>
-   
-    3.	Trim to remove low quality ends
     First, take a subset of forward and reverse reads to evaluate the distribution of sequence quality scores:<br>
     <code>RandomFastqPE.pl -f name_R1.fastq -r name_R2.fastq -n 1000 -o sub.R1.fastq -p sub.R2.fastq</code><br>
     View the average quality score by position:<br>
@@ -133,8 +131,25 @@
     Having decided on settings, you can now run the quality trimming script as e.g.:<br>
     <code>TruncateFastq.pl -i sub.R1.fastq -s 1 -e 250 -o trunc.R1.fastq</code><br>
     <code>TruncateFastq.pl -i sub.R2.fastq -s 1 -e 200 -o trunc.R2.fastq</code><br>
-
+   
+   <li><b>Remove any low-quality reads that remain</b></li>
+    To minimize the effects of sequencing error on our analysis of sequence variation, we remove any reads that have too
+    many low-quality positions in the regions that remained after quality trimming. We’ll reject any reads in which > X positions
+    had quality scores below a threshold M. e.g.<br>
+    <code>QualFilterFastq.pl -i trunc_R1.fastq -m 20 -x 25 -o hq_R1.fastq</code><br>
+    <code>QualFilterFastq.pl -i trunc_R2.fastq -m 20 -x 20 -o hq_R2.fastq</code><br>
     
+   <li><b>Remove reads lacking expected primer sequence</b></li>
+   Valid amplicons will begin and end with known sequences defined by the primers used to amplify those targets. To exclude reads 
+   lacking these sequences, we can enter the following, using DNA sequences of the primers used to amplify the targets. <br>
+    <code>ScreenFastqByPrimer.pl -i hq_R1.fastq -s <i>sequence1</i> -m 2 </code><br>
+    <code>ScreenFastqByPrimer.pl -i hq_R2.fastq -s <i>sequence2</i> -m 2 </code><br>
+    
+   <li><b>Remove orphan (unpaired) reads</b></li>
+   These occur when one read was removed during filtering, but its mate was not. Since paired reads are required for 
+   ASV analysis, we exclude orphan reads as:<br>
+   <code>FindPairedReads.pl -f target.R1.fastq -r target.R2.fastq -g name_R1.final.fastq -i name_R2.final.fastq</code><br>
+   
     
     
     <p>Since AlfI produces uniform 36-bp restriction fragments, we first truncate sequences to keep only
