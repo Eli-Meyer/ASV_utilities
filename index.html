@@ -214,6 +214,7 @@
    <span title="Click to collapse">
    <b>&#9665 Identify origin of ASVs</b></span></a>
    <div class="list">
+    <br>
     The instructions in this step focus specifically on analysis of Symbiodinium communities in reef-building corals. The database 
     will have to be prepared differently if your target, samples, or biological questions are different, although the same general
     process is generally applicable.
@@ -234,8 +235,20 @@
     Finally, you can compare your ASVs with the custom BLASTN database and add this information to the table of ASV abundance. 
     This identifies the biological origin of each sequence, providing context for interpretation of the ASV profiles.<br>
     <code>BlastnID.pl -q ASVs.fasta -d customDB.fasta -s 200 -i ASVtable.txt -o annot.ASVtable.txt </code><br>
-
-    
+    The output from this script is a tab-delimited text file with information about each ASV. This is identical to the input
+    file, but with five additional columns at the end (far right):
+    <ul>
+     <li>BestMatch: ID of the best match</li>
+     <li>BestScore: Bit-score of the best match</li>
+     <li>EvalRatio	Ratio of e-value for best match to the evalue of second best match</li>
+       (1 indicates a tie, closer to 0 indicates an unambiguous best match. A ratio of 0.02 
+       indicates the best match was 50 times less likely to occur by chance than the second 
+       best match). <br>
+     <li>NextHit: ID of the second best match</li>
+     <li>NextScore: Bit-score of the second best match</li>
+    </ul>
+    These allow the user to evaluate the confidence of each assignment by comparing the best and second-best matches,
+    and may be useful for excluding some ASVs (e.g. ASVs derived from the coral host instead of algal symbionts).<br>
     </ul>
    </div>
   </div>
