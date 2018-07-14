@@ -21,23 +21,27 @@
  </head>
 
  <body>
-  <div class="row" style="font-size: 85%;">
+   <div class="row" style="font-size: 90%;">
   <a href="#about" class="hide" id="about" style="text-decoration: none; color: black; margin-left: 2%">
    <span title="Click to expand">
    About this guide</span></a>
-  <a href="#top" class="show" id="top" style="text-decoration: none; color: black; margin-left: 2%">
+  <a href="#top" class="show" id="top" style="text-decoration: none; color: blue; margin-left: 2%">
    <span title="Click to collapse">
    About this guide</span></a>
    <div class="list">
-   <p>This page outlines our standard pipeline for analysis of 2bRAD genotyping data. These tools are intended
-   to be used on a high-performance computing cluster, and assume a basic knowledge of Linux and command-line
+   <p align="left" style="margin-left: 2%">This page outlines our standard pipeline for analysis of amplicon sequence variation. 
+    The guide focuses on analysis of Symbiodinium communities in reef-building corals using ITS2 amplicons, but the procedures 
+    described here can be easily modified for other targets or sample types. This guide covers the most recently updated version of
+    the pipeline as of July 2018 (v3.0).<br><br>
+   These tools are intended to be used on a high-performance computing cluster, and assume a basic knowledge of Linux and command-line
    tools. To analyze large numbers of samples in parallel, the user will probably want to (a) combine some of the
    following steps into shell scripts, and (b) submit each job to a job scheduler such as SGE. Since the details of
    those steps may vary from one cluster to another, we have left those details up to the end user.<br><br>
-   Click on each header to expand or collapse that section.<br><br>
-    This tutorial covers the most recently updated version of the pipeline as of July 2018 (v3.0).
-    </p>
+   Click on each header to expand or collapse that section.
+   </p>
    </div>
+  <br>
+  </div>
   <br>
   </div>
   <div class="row">
