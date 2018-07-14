@@ -1,4 +1,6 @@
-A collection of scripts for ITS amplicon analysis.
+A collection of scripts for analysis of amplicon sequencing data.
+
+For instructions, see the User's Guide at https://eli-meyer.github.io/Amplicon_utilities/
 
 -------------------------
 blastnID.pl
