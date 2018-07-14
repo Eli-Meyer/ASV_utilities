@@ -111,14 +111,33 @@
   <div class="row"><br>
   <a href="#process" class="hide" id="process" style="text-decoration: none; color: black; margin-left: 2%; font-size:14pt">
    <span title="Click to expand">
-   <b>&#9655 Trim and filter reads</b></span></a>
+   <b>&#9655 Process reads</b></span></a>
   <a href="#top" class="show" id="top" style="text-decoration: none; color: blue; margin-left: 2%; font-size:14pt">
    <span title="Click to collapse">
-   <b>&#9665 Trim and filter reads</b></span></a>
+   <b>&#9665 Process reads</b></span></a>
    <div class="list">
    <ul>
-   <li><b>Truncate</b></li>
-   <p>Since AlfI produces uniform 36-bp restriction fragments, we first truncate sequences to keep only
+   <li><b>Trim to remove low-quality ends</b></li>
+   
+    3.	Trim to remove low quality ends
+    First, take a subset of forward and reverse reads to evaluate the distribution of sequence quality scores:<br>
+    <code>RandomFastqPE.pl -f name_R1.fastq -r name_R2.fastq -n 1000 -o sub.R1.fastq -p sub.R2.fastq</code><br>
+    View the average quality score by position:<br>
+    <code>QualViewFastq.pl -i subset_R1.fastq > R1_qplot.txt</code><br>
+    <code>QualViewFastq.pl -i subset_R2.fastq > R2_qplot.txt</code><br>
+    Look at the distribution of quality scores and decide where to cut sequences. Ideally you should remove regions 
+    where median quality scores are < 30, but balance this with the need to preserving adequate overlap (≥30 bp) between 
+    F and R reads (based on amplicon size).<br>
+    <code>less R1_qplot.txt</code><br>
+    <code>less R2_qplot.txt</code><br>
+    Having decided on settings, you can now run the quality trimming script as e.g.:<br>
+    <code>TruncateFastq.pl -i sub.R1.fastq -s 1 -e 250 -o trunc.R1.fastq</code><br>
+    <code>TruncateFastq.pl -i sub.R2.fastq -s 1 -e 200 -o trunc.R2.fastq</code><br>
+
+    
+    
+    
+    <p>Since AlfI produces uniform 36-bp restriction fragments, we first truncate sequences to keep only
    the inserts derived from these fragments. This can be accomplished by running:<br>
    <code>TruncateFastq.pl -i input.fastq -s 1 -e 36 -o output.fastq</code><br>
    to read "input.fastq", trim away the sequences after 36 bp, and write the output to a file called "output.fastq".<br>
