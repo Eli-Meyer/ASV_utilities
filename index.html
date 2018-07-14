@@ -187,11 +187,20 @@
       After editing the R script as appropriate for your data, you can run the script as:<br>
     <code>./ASV_dada2.R >ASVs.log</code><br>
     <li><b> Evaluate output </b></li>
-   
-    
-    Text <br>
-    <code>  </code><br>
- 
+      The two main outputs from the pipeline are:<br>
+    <ul>
+     <li>ASV.fasta: a FASTA file containing DNA sequence of each amplicon sequence variant identified in the data</li>
+     <li>ASVtable.txt: a file containing the number of times each ASV occured in each sample</li>
+    </ul>
+      Additional details about the analysis are reported in the log file (ASVs.log, in the example above).<br><br>
+      The script also produces several figures (PDF format) describing the quality of input data and the distribution of 
+      ASVs across samples. <br>
+    <ul>
+     <li>QualPlotN.pdf: Shows quality scores by position in the processed reads for the first four samples.<li>
+     <li>ErrorEstimatesX.pdf: Comparison of error rate model estimates, observed error rates, and theoretical expectations.<li>
+     <li>ASVlengths.pdf: The distribution of ASV lengths.<li>
+     <li>ASVsBySample.pdf: A simple overview of communities in each sample inferred from ASV abundances.<li>
+    </ul>
    </ul>
    </div>
   </div>
